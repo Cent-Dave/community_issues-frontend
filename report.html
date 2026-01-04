@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Community Issue Reporting</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="./image/logo.jpg" alt="logo" class="sidebar-logo" />
+        <h2>Community Dashboard</h2>
+      </div>
+      <ul class="sidebar-menu">
+        <li>
+          <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li>
+          <a href="report.html" class="active"
+            ><i class="fas fa-plus-circle"></i> Report Issue</a
+          >
+        </li>
+        <li>
+          <a href="issues.html"><i class="fas fa-list"></i> View Issues</a>
+        </li>
+        <li>
+          <a href="admin.html"><i class="fas fa-user-shield"></i> Admin</a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="page-header">
+        <h1>Report a Community Issue</h1>
+      </header>
+
+      <section class="form-section">
+        <form id="issueForm" class="issue-form">
+          <div class="form-group">
+            <label for="reporterName">Your Name</label>
+            <input
+              type="text"
+              id="reporterName"
+              class="form-control"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="contactInfo">Phone or Email</label>
+            <input
+              type="text"
+              id="contactInfo"
+              class="form-control"
+              placeholder="Enter contact info"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="title">Issue Title</label>
+            <input
+              type="text"
+              id="title"
+              class="form-control"
+              placeholder="Enter title"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+              id="description"
+              class="form-control"
+              placeholder="Describe the issue"
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" class="form-control" required>
+              <option value="">---Select Category---</option>
+              <option value="Road Damage">Road Damage</option>
+              <option value="Power Outage">Power Outage</option>
+              <option value="Water Supply">Water Supply</option>
+              <option value="Waste Management">Waste Management</option>
+              <option value="Security">Security</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input
+              type="text"
+              id="location"
+              class="form-control"
+              placeholder="Enter location"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn-submit">Submit Issue</button>
+        </form>
+
+        <p id="message" class="form-message"></p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- About / Project -->
+        <div class="footer-section about">
+          <h3>Community Issue Reporting</h3>
+          <p>
+            Helping communities report problems quickly<br />
+            and efficiently.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="report.html">Report Issue</a></li>
+            <li><a href="issues.html">View Issues</a></li>
+            <li><a href="admin.html">Admin</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-section contact">
+          <h4>Contact Us</h4>
+          <p>Email: ebukaigbokwe04@gmail.com</p>
+          <p>Phone: +234 804 083 3088</p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/ebuka.igbokwe.777"
+              ><i class="fab fa-facebook"></i> Facebook</a
+            >
+            <a href="https://x.com/IgbokweEbuka04"
+              ><i class="fab fa-twitter"></i> X</a
+            >
+            <a href="https://www.instagram.com/igbokwechukwuebukadavid"
+              ><i class="fab fa-instagram"></i> Instagram</a
+            >
+            <a href="https://www.linkedin.com/in/chukwuebuka-igbokwe-19949b30a?"
+              ><i class="fab fa-linkedin"></i> LinkedIn</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Community Issue Reporting. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="js/reportIssue.js"></script>
+  </body>
+</html>

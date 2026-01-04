@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Reported Issues</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="./image/logo.jpg" alt="logo" class="sidebar-logo" />
+        <h2>Community Dashboard</h2>
+      </div>
+      <ul class="sidebar-menu">
+        <li>
+          <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li>
+          <a href="report.html"
+            ><i class="fas fa-plus-circle"></i> Report Issue</a
+          >
+        </li>
+        <li>
+          <a href="issues.html" class="active"
+            ><i class="fas fa-list"></i> View Issues</a
+          >
+        </li>
+        <li>
+          <a href="admin.html"><i class="fas fa-user-shield"></i> Admin</a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="page-header">
+        <h1>Reported Community Issues</h1>
+      </header>
+
+      <section class="issues-section">
+        <div id="issuesContainer" class="issues-container">
+          <!-- Fetched issues will appear here -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- About / Project -->
+        <div class="footer-section about">
+          <h3>Community Issue Reporting</h3>
+          <p>
+            Helping communities report problems quickly<br />
+            and efficiently.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="report.html">Report Issue</a></li>
+            <li><a href="issues.html">View Issues</a></li>
+            <li><a href="admin.html">Admin</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-section contact">
+          <h4>Contact Us</h4>
+          <p>Email: ebukaigbokwe04@gmail.com</p>
+          <p>Phone: +234 804 083 3088</p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/ebuka.igbokwe.777"
+              ><i class="fab fa-facebook"></i> Facebook</a
+            >
+            <a href="https://x.com/IgbokweEbuka04"
+              ><i class="fab fa-twitter"></i> X</a
+            >
+            <a href="https://www.instagram.com/igbokwechukwuebukadavid"
+              ><i class="fab fa-instagram"></i> Instagram</a
+            >
+            <a href="https://www.linkedin.com/in/chukwuebuka-igbokwe-19949b30a?"
+              ><i class="fab fa-linkedin"></i> LinkedIn</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Community Issue Reporting. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="js/fetchIssues.js"></script>
+  </body>
+</html>
