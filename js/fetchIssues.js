@@ -1,7 +1,13 @@
 const issuesContainer = document.getElementById("issuesContainer");
 const loadingSpinner = document.getElementById("loadingSpinner");
+const logoutBtn = document.getElementById("logoutBtn");
 
 const API_BASE_URL = "https://community-issues-backend.onrender.com";
+
+//Logout from other page removes the token; if no token? direct this page back to login page
+if (!localStorage.getItem("token")) {
+  location.replace("login.html");
+}
 
 async function loadIssues() {
   loadingSpinner.style.display = "flex";
@@ -45,16 +51,42 @@ async function loadIssues() {
         <p><strong>Description:</strong> ${issue.description}</p>
         <p><strong>Category:</strong> ${issue.category}</p>
         <p><strong>Location:</strong> ${issue.location}</p>
-        <p><strong>Reporter:</strong> ${issue.reporterName} | ${issue.contactInfo}</p>
+        <p><strong>Reporter:</strong> ${issue.reporterName}</p>
+        <p><strong>Reported on:</strong> ${Intl.DateTimeFormat(
+          navigator.language,
+          {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: "true",
+          }
+        )
+          .formatToParts(new Date(issue.createdAt))
+          .map((p) =>
+            p.type === "dayPeriod" ? p.value.toUpperCase() : p.value
+          )
+          .join("")}</p>
         <span class="${statusClass}">${issue.status}</span>
       `;
 
       issuesContainer.appendChild(div);
     });
   } catch (err) {
-    issuesContainer.innerHTML = `<p>⚠️Couldn't load issues⚠️<em>  Error: ${err.message}❗❗❗<em></p>`;
+    loadingSpinner.style.display = "none";
+    issuesContainer.style.display = "flex";
+    issuesContainer.innerHTML = `<p>⚠️Couldn't load issues.<em>⛔Error: ${err.message}❗❗❗</em>.</p>`;
   }
 }
 
 // Load issues when page loads
 window.addEventListener("DOMContentLoaded", loadIssues);
+
+//Logout
+logoutBtn.addEventListener("click", () => {
+  if (!confirm("Are you sure you want to logout?")) return;
+
+  localStorage.clear();
+  window.location.replace("login.html");
+});

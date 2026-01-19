@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -15,11 +15,14 @@
     <aside class="sidebar">
       <div class="sidebar-header">
         <img src="./images/logo.jpg" alt="logo" class="sidebar-logo" />
-        <h2>Community Dashboard</h2>
+        <h2>
+          <span class="logo-text">Comm</span
+          ><span class="logo-highlight">Connect</span>
+        </h2>
       </div>
       <ul class="sidebar-menu">
         <li>
-          <a href="index.html"><i class="fas fa-home"></i> Home</a>
+          <a href="home.html"><i class="fas fa-home"></i> Home</a>
         </li>
         <li>
           <a href="report.html"
@@ -33,6 +36,11 @@
           <a href="admin.html" class="active"
             ><i class="fas fa-user-shield"></i> Admin</a
           >
+        </li>
+        <li>
+          <button id="logoutBtn" class="btn-logout">
+            <i class="fas fa-power-off"></i> Logout
+          </button>
         </li>
       </ul>
     </aside>
@@ -85,7 +93,7 @@
         <div class="footer-section links">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="home.html">Home</a></li>
             <li><a href="report.html">Report Issue</a></li>
             <li><a href="issues.html">View Issues</a></li>
             <li><a href="admin.html">Admin</a></li>

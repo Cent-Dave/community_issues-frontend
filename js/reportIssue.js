@@ -6,10 +6,15 @@ const description = document.getElementById("description");
 const category = document.getElementById("category");
 const issueLocation = document.getElementById("location");
 const message = document.getElementById("message");
-
+const logoutBtn = document.getElementById("logoutBtn");
 const submitBtn = document.querySelector(".btn-submit");
 
 const API_BASE_URL = "https://community-issues-backend.onrender.com";
+
+//Logout from other page removes the token; if no token? direct this page back to login page
+if (!localStorage.getItem("token")) {
+  location.replace("login.html");
+}
 
 issueForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -41,11 +46,19 @@ issueForm.addEventListener("submit", async (e) => {
       issueForm.reset();
     } else {
       message.textContent = data.error || "Something went wrong";
-      message.style.color = "red";
+      message.style.color = "#c50000";
     }
   } catch (err) {
     message.textContent = "Error! Issue was not submitted";
-    message.style.color = "red";
+    message.style.color = "#c50000";
   }
   submitBtn.textContent = "Submit";
+});
+
+//Logout
+logoutBtn.addEventListener("click", () => {
+  if (!confirm("Are you sure you want to logout?")) return;
+
+  localStorage.clear();
+  window.location.replace("login.html");
 });

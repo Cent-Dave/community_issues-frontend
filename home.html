@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Report Community Issue</title>
+    <title>Local issue tracker</title>
     <link rel="stylesheet" href="css/style.css" />
     <link
       rel="stylesheet"
@@ -11,6 +11,9 @@
     />
   </head>
   <body>
+    <div id="welcomeMessage" class="welcome-message">
+      <span id="welcomeText"></span>
+    </div>
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="sidebar-header">
@@ -22,10 +25,12 @@
       </div>
       <ul class="sidebar-menu">
         <li>
-          <a href="home.html"><i class="fas fa-home"></i> Home</a>
+          <a href="home.html" class="active"
+            ><i class="fas fa-home"></i> Home</a
+          >
         </li>
         <li>
-          <a href="report.html" class="active"
+          <a href="report.html"
             ><i class="fas fa-plus-circle"></i> Report Issue</a
           >
         </li>
@@ -45,82 +50,36 @@
 
     <!-- Main Content -->
     <main class="main-content">
-      <header class="page-header">
-        <h1>Report a Community Issue</h1>
-      </header>
+      <!-- Image Section -->
+      <section class="image">
+        <div class="image-overlay">
+          <h1>Make Your Community Better</h1>
+          <p>
+            Report problems, track progress, and help create a safer environment
+            for everyone.
+          </p>
+          <a href="report.html" class="btn-image">Report an Issue</a>
+          <a href="issues.html" class="btn-image">View Issues</a>
+        </div>
+      </section>
 
-      <section class="form-section">
-        <form id="issueForm" class="issue-form">
-          <div class="form-group">
-            <label for="reporterName">Your Name</label>
-            <input
-              type="text"
-              id="reporterName"
-              class="form-control"
-              placeholder="Enter your name"
-              required
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="contactInfo">Phone or Email</label>
-            <input
-              type="text"
-              id="contactInfo"
-              class="form-control"
-              placeholder="Enter contact info"
-              required
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="title">Issue Title</label>
-            <input
-              type="text"
-              id="title"
-              class="form-control"
-              placeholder="Enter title"
-              required
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="description">Description</label>
-            <textarea
-              id="description"
-              class="form-control"
-              placeholder="Describe the issue"
-              required
-            ></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="category">Category</label>
-            <select id="category" class="form-control" required>
-              <option value="">---Select Category---</option>
-              <option value="Road Damage">Road Damage</option>
-              <option value="Power Outage">Power Outage</option>
-              <option value="Water Supply">Water Supply</option>
-              <option value="Waste Management">Waste Management</option>
-              <option value="Security">Security</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="location">Location</label>
-            <input
-              type="text"
-              id="location"
-              class="form-control"
-              placeholder="Enter location"
-              required
-            />
-          </div>
-
-          <button type="submit" class="btn-submit">Submit Issue</button>
-        </form>
-
-        <p id="message" class="form-message"></p>
+      <!-- Features Section -->
+      <section class="features">
+        <div class="feature">
+          <i class="fas fa-bolt fa-2x feature-icon"></i>
+          <h3>Quick Reporting</h3>
+          <p>Submit issues in minutes and reach the authorities faster.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-tasks fa-2x feature-icon"></i>
+          <h3>Track Progress</h3>
+          <p>See the status of your issues from pending to resolved.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-users fa-2x feature-icon"></i>
+          <h3>Community Impact</h3>
+          <p>Help make your community safer and better for everyone.</p>
+        </div>
       </section>
     </main>
 
@@ -174,6 +133,6 @@
       </div>
     </footer>
 
-    <script src="js/reportIssue.js"></script>
+    <script src="js/home.js"></script>
   </body>
 </html>

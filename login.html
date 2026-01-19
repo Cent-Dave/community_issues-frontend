@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up - CommConnect</title>
+    <title>Login - CommConnect</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <main class="first-form">
       <section class="form-section">
-        <h1>Sign Up</h1>
-        <form id="signupForm">
+        <h1>Login to CommConnect</h1>
+        <form id="loginForm">
           <div class="form-group">
             <label for="username">Username</label>
             <input type="text" id="username" class="form-control" required />
@@ -24,15 +24,13 @@
               required
             />
           </div>
-          <button type="submit" id="signupBtn" class="btn-submit">
-            Sign Up
-          </button>
+          <button type="submit" id="loginBtn" class="btn-submit">Login</button>
         </form>
-        <p id="signupMessage" class="form-message"></p>
-        <p>Already have an account? <a href="login.html">Login here</a></p>
+        <p id="loginMessage" class="form-message"></p>
+        <p>Don't have an account? <a href="index.html">Sign up here</a></p>
       </section>
     </main>
 
-    <script src="js/index.js"></script>
+    <script src="js/login.js"></script>
   </body>
 </html>
