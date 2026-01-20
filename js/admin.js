@@ -4,6 +4,10 @@ const pinSection = document.getElementById("pinSection");
 const adminSection = document.getElementById("adminSection");
 const adminIssuesContainer = document.getElementById("adminIssuesContainer");
 const loadingSpinner = document.getElementById("loadingSpinner");
+const statusFilter = document.getElementById("statusFilter");
+const categoryFilter = document.getElementById("categoryFilter");
+const btnSubmit = document.getElementById("btnSubmit");
+const reporterSearch = document.getElementById("reporterSearch");
 const logoutBtn = document.getElementById("logoutBtn");
 
 const API_BASE_URL = "https://community-issues-backend.onrender.com";
@@ -15,6 +19,7 @@ if (!localStorage.getItem("token")) {
 
 // Verify admin PIN
 async function verifyPin() {
+  btnSubmit.textContent = "Accessing Admin...";
   const inputPin = adminPin.value;
   try {
     const response = await fetch(`${API_BASE_URL}/api/admin/verify-pin`, {
@@ -36,6 +41,7 @@ async function verifyPin() {
     pinMessage.textContent = "Server error!!!";
     pinMessage.style.color = "#c50000";
   }
+  btnSubmit.textContent = "Access Admin";
 }
 
 // Load all issues for admin
@@ -59,6 +65,7 @@ async function loadAdminIssues() {
 
     issues.forEach((issue) => {
       const div = document.createElement("div");
+      div.classList.add("issue-card");
 
       // Select status in dropdown
       const statuses = ["Pending", "In Progress", "Resolved"];
@@ -70,6 +77,10 @@ async function loadAdminIssues() {
             }>${status}</option>`,
         )
         .join("");
+
+      div.dataset.status = issue.status.toLowerCase();
+      div.dataset.category = issue.category.toLowerCase();
+      div.dataset.reporter = issue.reporterName.toLowerCase();
 
       div.innerHTML = `
         <h3>${issue.title}</h3>
@@ -103,6 +114,7 @@ async function loadAdminIssues() {
       `;
 
       adminIssuesContainer.appendChild(div);
+      filterIssues();
     });
   } catch (err) {
     loadingSpinner.style.display = "none";
@@ -138,6 +150,38 @@ async function deleteIssue(id) {
     alert("Error occurred in deleting this issue: " + err.message);
   }
 }
+
+function filterIssues() {
+  const selectedStatus = statusFilter.value.toLowerCase();
+  const selectedCategory = categoryFilter.value.toLowerCase();
+  const searchValue = reporterSearch.value.toLowerCase();
+
+  const issueCards = document.querySelectorAll(".issue-card");
+
+  issueCards.forEach((card) => {
+    const issueStatus = card.dataset.status;
+    const issueCategory = card.dataset.category;
+    const issueReporter = card.dataset.reporter;
+
+    const allStatus = selectedStatus === "all";
+    const specificStatus = selectedStatus === issueStatus;
+    const allCategory = selectedCategory === "all";
+    const specificCategory = selectedCategory === issueCategory;
+
+    const statusMatch = allStatus || specificStatus;
+
+    const categoryMatch = allCategory || specificCategory;
+
+    const reporterMatch = issueReporter.toLowerCase().includes(searchValue);
+
+    card.style.display =
+      statusMatch && categoryMatch && reporterMatch ? "block" : "none";
+  });
+}
+
+statusFilter.addEventListener("change", filterIssues);
+categoryFilter.addEventListener("change", filterIssues);
+reporterSearch.addEventListener("input", filterIssues);
 
 //Logout
 logoutBtn.addEventListener("click", () => {

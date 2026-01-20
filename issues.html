@@ -51,6 +51,44 @@
         <h1>Reported Community Issues</h1>
       </header>
 
+      <div class="filters">
+        <div class="group">
+          <h4>Filter<i class="fa-solid fa-filter"></i>:</h4>
+          <!-- Status Filter -->
+          <div class="filter-group">
+            <label for="statusFilter">Status</label>
+            <select id="statusFilter">
+              <option value="all">All</option>
+              <option value="pending">Pending</option>
+              <option value="in progress">In Progress</option>
+              <option value="resolved">Resolved</option>
+            </select>
+          </div>
+          <!-- Category Filter -->
+          <div class="filter-group">
+            <label for="categoryFilter">Category</label>
+            <select id="categoryFilter">
+              <option value="all">All</option>
+              <option value="road damage">Road Damage</option>
+              <option value="power outage">Power Outage</option>
+              <option value="water supply">Water Supply</option>
+              <option value="waste management">Waste Management</option>
+              <option value="security">Security</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Reporter Search-->
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="text"
+            id="reporterSearch"
+            placeholder="Search by reporter's name..."
+          />
+        </div>
+      </div>
+
       <section class="issues-section">
         <div id="loadingSpinner" class="loading-spinner">
           <div class="spinner"></div>
@@ -62,10 +100,8 @@
       </section>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="footer-container">
-        <!-- About / Project -->
         <div class="footer-section about">
           <h3>Community Issue Reporting</h3>
           <p>
@@ -74,7 +110,6 @@
           </p>
         </div>
 
-        <!-- Quick Links -->
         <div class="footer-section links">
           <h4>Quick Links</h4>
           <ul>
@@ -85,7 +120,6 @@
           </ul>
         </div>
 
-        <!-- Contact Info -->
         <div class="footer-section contact">
           <h4>Contact Us</h4>
           <p>Email: ebukaigbokwe04@gmail.com</p>

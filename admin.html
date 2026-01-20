@@ -60,12 +60,52 @@
           class="form-control"
           placeholder="Enter PIN"
         />
-        <button onclick="verifyPin()" class="btn-submit">Access Admin</button>
+        <button onclick="verifyPin()" id="btnSubmit" class="btn-submit">
+          Access Admin
+        </button>
         <p id="pinMessage" class="form-message"></p>
       </section>
 
-      <!-- Admin Dashboard (hidden initially) -->
+      <!-- Admin Dashboard -->
       <section id="adminSection" class="admin-dashboard" style="display: none">
+        <div class="filters">
+          <div class="group">
+            <h4>Filter<i class="fa-solid fa-filter"></i>:</h4>
+            <!-- Status Filter -->
+            <div class="filter-group">
+              <label for="statusFilter">Status</label>
+              <select id="statusFilter">
+                <option value="all">All</option>
+                <option value="pending">Pending</option>
+                <option value="in progress">In Progress</option>
+                <option value="resolved">Resolved</option>
+              </select>
+            </div>
+            <!-- Category Filter -->
+            <div class="filter-group">
+              <label for="categoryFilter">Category</label>
+              <select id="categoryFilter">
+                <option value="all">All</option>
+                <option value="road damage">Road Damage</option>
+                <option value="power outage">Power Outage</option>
+                <option value="water supply">Water Supply</option>
+                <option value="waste management">Waste Management</option>
+                <option value="security">Security</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Reporter Filter-->
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+              type="text"
+              id="reporterSearch"
+              placeholder="Search by reporter's name..."
+            />
+          </div>
+        </div>
+
         <div id="loadingSpinner" class="loading-spinner">
           <div class="spinner"></div>
           <p>Loading issues...</p>

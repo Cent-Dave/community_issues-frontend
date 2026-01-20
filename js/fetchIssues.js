@@ -1,5 +1,8 @@
 const issuesContainer = document.getElementById("issuesContainer");
 const loadingSpinner = document.getElementById("loadingSpinner");
+const statusFilter = document.getElementById("statusFilter");
+const categoryFilter = document.getElementById("categoryFilter");
+const reporterSearch = document.getElementById("reporterSearch");
 const logoutBtn = document.getElementById("logoutBtn");
 
 const API_BASE_URL = "https://community-issues-backend.onrender.com";
@@ -29,6 +32,11 @@ async function loadIssues() {
 
     issues.forEach((issue) => {
       const div = document.createElement("div");
+      div.classList.add("issue-card");
+
+      div.dataset.status = issue.status.toLowerCase();
+      div.dataset.category = issue.category.toLowerCase();
+      div.dataset.reporter = issue.reporterName.toLowerCase();
 
       // Determine status badge class
       let statusClass = "";
@@ -61,11 +69,11 @@ async function loadIssues() {
             hour: "2-digit",
             minute: "2-digit",
             hour12: "true",
-          }
+          },
         )
           .formatToParts(new Date(issue.createdAt))
           .map((p) =>
-            p.type === "dayPeriod" ? p.value.toUpperCase() : p.value
+            p.type === "dayPeriod" ? p.value.toUpperCase() : p.value,
           )
           .join("")}</p>
         <span class="${statusClass}">${issue.status}</span>
@@ -73,6 +81,7 @@ async function loadIssues() {
 
       issuesContainer.appendChild(div);
     });
+    filterIssues();
   } catch (err) {
     loadingSpinner.style.display = "none";
     issuesContainer.style.display = "flex";
@@ -82,6 +91,38 @@ async function loadIssues() {
 
 // Load issues when page loads
 window.addEventListener("DOMContentLoaded", loadIssues);
+
+function filterIssues() {
+  const selectedStatus = statusFilter.value.toLowerCase();
+  const selectedCategory = categoryFilter.value.toLowerCase();
+  const searchValue = reporterSearch.value.toLowerCase();
+
+  const issueCards = document.querySelectorAll(".issue-card");
+
+  issueCards.forEach((card) => {
+    const issueStatus = card.dataset.status;
+    const issueCategory = card.dataset.category;
+    const issueReporter = card.dataset.reporter;
+
+    const allStatus = selectedStatus === "all";
+    const specificStatus = selectedStatus === issueStatus;
+    const allCategory = selectedCategory === "all";
+    const specificCategory = selectedCategory === issueCategory;
+
+    const statusMatch = allStatus || specificStatus;
+
+    const categoryMatch = allCategory || specificCategory;
+
+    const reporterMatch = issueReporter.toLowerCase().includes(searchValue);
+
+    card.style.display =
+      statusMatch && categoryMatch && reporterMatch ? "block" : "none";
+  });
+}
+
+statusFilter.addEventListener("change", filterIssues);
+categoryFilter.addEventListener("change", filterIssues);
+reporterSearch.addEventListener("input", filterIssues);
 
 //Logout
 logoutBtn.addEventListener("click", () => {
